@@ -1,21 +1,3 @@
-# Daisyxmusic (Telegram bot project)
-# Copyright (C) 2021  Inukaasith 
-
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
-
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
-
 from os import path
 from typing import Dict
 from pyrogram import Client
@@ -771,28 +753,15 @@ async def jiosaavn(client: Client, message_: Message):
         print(str(e))
         is_playing = False
         return
-    keyboard = InlineKeyboardMarkup(
-         [   
-             [
-               InlineKeyboardButton('📖 Daftar Music', callback_data='playlist'),
-               InlineKeyboardButton('Menu ⏯ ', callback_data='menu')   
-             ],                     
-             [
-                    InlineKeyboardButton(
-                        "𝙂𝙧𝙤𝙪𝙥 𝙎𝙪𝙥𝙥𝙤𝙧𝙩", url="https://t.me/KingUserbotSupport"
-                    ),
-                    InlineKeyboardButton(
-                        "𝙈𝙖𝙨𝙩𝙚𝙧", url="https://t.me/PacarFerdilla"
-                    )
+        keyboard = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("ᴄʜᴀɴɴᴇʟ ʙᴜᴄɪɴ", url="t.me/randfeels"),
+                    InlineKeyboardButton("Group Chat", url="t.me/cchbct"),
                 ],
-             [       
-               InlineKeyboardButton(
-                   text="🗑 Tutup",
-                   callback_data='cls')
-
-            ]                          
-         ]
-     )
+                [InlineKeyboardButton(text="ᴏᴡɴᴇʀ ɪɢ", url="https://instagram.com/zekiloi")],
+            ]
+        )
     file_path= await converter.convert(wget.download(slink))
     if message_.chat.id in callsmusic.pytgcalls.active_calls:
         position = await queues.put(message_.chat.id, file=file_path)
@@ -829,9 +798,8 @@ async def jiosaavn(client: Client, message_: Message):
         chat_id=message_.chat.id,
         reply_markup=keyboard,
         photo="final.png",
-        caption=f"**Sedang Memutar** Lagu {sname} Via Jiosaavn",
-        
+        caption=f"🏷 **Judul:** [{title[:60]}]({url})\n**⏱ Durasi:** {duration}\n" \
+                + f"💡 **Status:** Playing\n🎧 **Permintaan:** {requested_by}".format(
+        message.from_user.mention
     )
     os.remove("final.png")
-
-# Have u read all. If read RESPECT :-)
